@@ -1,0 +1,58 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Pqrs</h1>
+
+<%if current_user %>
+<div id="pqrs">
+  <% @pqrs.each do |pqr| %>
+    <%= render pqr %>
+    <p>
+      <%= link_to "Show this pqr", pqr %>
+    </p>
+  <% end %>
+</div>
+  <%= link_to "New pqr", new_pqr_path %>
+
+<%elsif current_admin%>
+
+<div id="pqrs_admin">
+  <table>
+  <thead>
+    <tr>
+      <th>Usuario</th>
+      <th>Predio</th>
+      <th>Tipo</th>
+      <th>Descripcion</th>
+      <th>Responder</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pqrs_general.each do |pqrg| %>
+      <tr>
+        <td><%= pqrg.user.name %></td>
+        <td><%= pqrg.user.predio.name %></td>
+        <td><%= pqrg.tipo %></td>
+        <td><%= pqrg.descripcion %></td>
+        <td>
+        <% if current_admin %>
+          <button onclick="responder();">Responder PQR</button>
+        <%end%>
+        <script>
+          function responder() {
+            var id_pqr = "<%=pqrg.id%>";
+              localStorage.setItem("someVarKey", id_pqr);
+
+              if (id_pqr != '') {
+                window.location.replace("/respuesta_pqrs/new");
+              }
+          }
+        </script>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+    
+<%end%>
+

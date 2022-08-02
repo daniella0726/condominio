@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Respuesta pqrs</h1>
+
+<div id="respuesta_pqrs">
+  <% @respuesta_pqrs.each do |respuesta_pqr| %>
+    <%= render respuesta_pqr %>
+    <p>
+      <%= link_to "Show this respuesta pqr", respuesta_pqr %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New respuesta pqr", new_respuesta_pqr_path %>

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @pqr %>
+
+<div>
+  <%= link_to "Edit this pqr", edit_pqr_path(@pqr) %> |
+  <%= link_to "Back to pqrs", pqrs_path %>
+
+  <%= button_to "Destroy this pqr", @pqr, method: :delete %>
+</div>

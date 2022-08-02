@@ -1,0 +1,32 @@
+<%= form_with(model: respuesta_pqr) do |form| %>
+  <% if respuesta_pqr.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(respuesta_pqr.errors.count, "error") %> prohibited this respuesta_pqr from being saved:</h2>
+
+      <ul>
+        <% respuesta_pqr.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.text_field :pqr_id, id:"res_pqrr" %>
+    <%= form.text_field :admin_id, value: current_admin.id %>
+    <script>
+        var id_pqr = localStorage.getItem("someVarKey");
+
+        $("#res_pqrr").val(id_pqr);
+    </script>
+  </div>
+
+  <div>
+    <%= form.label :descripcion, style: "display: block" %>
+    <%= form.text_area :descripcion %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,35 @@
+<%= form_with(model: predio) do |form| %>
+  <% if predio.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(predio.errors.count, "error") %> prohibited this predio from being saved:</h2>
+
+      <ul>
+        <% predio.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.select :tipo, ['Apartamento', 'Casa'], {:include_blank => true, prompt: 'Selecciona un tipo de vivienda'}, required: true, style: "display: block" %>
+  </div>
+<br>
+  <div>
+    <%= form.label :tipo_no, "Número", required: true, style: "display: block" %>
+    <%= form.number_field :tipo_no %>
+  </div>
+<br>
+  <div>
+    <%= form.select :ubicacion, ['Etapa', 'Torre', 'N.A'], {:include_blank => true, prompt: 'Selecciona la nomenclatura correspondiente'}, required: true, style: "display: block" %>
+  </div>
+ <br> 
+  <div>
+    <%= form.label :ubicacion_no, style: "display: block" %>
+    <%= form.number_field :ubicacion_no %>
+  </div>
+<br>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

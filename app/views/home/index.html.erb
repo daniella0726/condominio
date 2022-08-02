@@ -1,0 +1,13 @@
+<h1>Bienvenido a Condominio App</h1>
+<br>
+<% if current_user %>
+    <h1><%=current_user.name%> <%=current_user.predio.name%></h1>
+    <p><a href="/pqrs/new">Nueva PQR</a></p>
+<%elsif current_admin%>
+    <h1><%=current_admin.name%></h1>
+    <h3>Revisa las PQR de los residentes</h3>
+    <p><a href="/pqrs">Ver todas las pqrs</p>
+<%else%>
+    <p><a href="/admins/sign_in">Administrador</a></p>
+    <p><a href="/users/sign_in">Residente</a></p>
+<%end%>
