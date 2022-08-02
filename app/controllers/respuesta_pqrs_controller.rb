@@ -25,6 +25,7 @@ class RespuestaPqrsController < ApplicationController
 
     respond_to do |format|
       if @respuesta_pqr.save
+
         format.html { redirect_to respuesta_pqr_url(@respuesta_pqr), notice: "Respuesta pqr was successfully created." }
         format.json { render :show, status: :created, location: @respuesta_pqr }
       else
@@ -62,7 +63,7 @@ class RespuestaPqrsController < ApplicationController
     def set_respuesta_pqr
       @respuesta_pqr = RespuestaPqr.find(params[:id])
     end
-
+    
     # Only allow a list of trusted parameters through.
     def respuesta_pqr_params
       params.require(:respuesta_pqr).permit(:pqr_id, :admin_id, :descripcion)

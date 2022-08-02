@@ -5,6 +5,8 @@ class Admin < ApplicationRecord
   validates :status, presence: true
   validates :name, presence: true
   validates :cargo, presence: true
+
+  has_many :respuesta_pqrs
   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

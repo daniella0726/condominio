@@ -34,6 +34,9 @@ class PqrsController < ApplicationController
 
     respond_to do |format|
       if @pqr.save
+
+        PqrMailer.with(pqr: @pqr).welcome_email.deliver_now
+
         format.html { redirect_to pqr_url(@pqr), notice: "Pqr was successfully created." }
         format.json { render :show, status: :created, location: @pqr }
       else
@@ -47,6 +50,11 @@ class PqrsController < ApplicationController
   def update
     respond_to do |format|
       if @pqr.update(pqr_params)
+
+        if current_admin 
+          RespuestaPqrMailer.with(pqr: @pqr).welcome_email.deliver_now
+        end
+
         format.html { redirect_to pqr_url(@pqr), notice: "Pqr was successfully updated." }
         format.json { render :show, status: :ok, location: @pqr }
       else
@@ -74,6 +82,6 @@ class PqrsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pqr_params
-      params.require(:pqr).permit(:user_id, :tipo, :descripcion)
+      params.require(:pqr).permit(:user_id, :tipo, :descripcion, :status, respuesta_pqrs_attributes: [:id, :pqr_id, :admin_id, :descripcion])
     end
 end

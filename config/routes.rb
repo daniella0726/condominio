@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   
   resources :pqrs
   devise_for :users
-  #resources :users
+  resources :users
   resources :predios
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

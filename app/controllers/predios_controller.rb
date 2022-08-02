@@ -1,4 +1,5 @@
 class PrediosController < ApplicationController
+  layout "admin"
   before_action :set_predio, only: %i[ show edit update destroy ]
 
   # GET /predios or /predios.json

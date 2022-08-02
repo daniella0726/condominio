@@ -27,8 +27,8 @@
   </div>
 
   <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.text_field :status %>
+    <%= form.label :status, 'Selecciona el estado', style: "display: block" %>
+    <%= form.select :status, ['activo', 'inactivo'], {:include_blank => true, prompt: 'Selecciona el status'}, required: true, style: "display: block" %>
   </div>
 
   <div>
