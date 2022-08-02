@@ -22,6 +22,10 @@ class PqrsController < ApplicationController
 
   # GET /pqrs/1/edit
   def edit
+    if admin_signed_in?
+      @pqr.respuesta_pqrs.build
+      render layout: "admin"
+    end
   end
 
   # POST /pqrs or /pqrs.json

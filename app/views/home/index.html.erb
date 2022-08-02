@@ -3,6 +3,7 @@
 <% if current_user %>
     <h1><%=current_user.name%> <%=current_user.predio.name%></h1>
     <p><a href="/pqrs/new">Nueva PQR</a></p>
+     <p><a href="/pqrs">Revisa tus PQR y su estado</a></p>
 <%elsif current_admin%>
     <h1><%=current_admin.name%></h1>
     <h3>Revisa las PQR de los residentes</h3>

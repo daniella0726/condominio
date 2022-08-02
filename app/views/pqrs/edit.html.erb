@@ -1,10 +1,16 @@
-<h1>Editing pqr</h1>
+<%if current_user%>
+  <h1>Editing pqr</h1>
 
-<%= render "form", pqr: @pqr %>
+  <%= render "form", pqr: @pqr %>
 
-<br>
+  <br>
 
-<div>
-  <%= link_to "Show this pqr", @pqr %> |
-  <%= link_to "Back to pqrs", pqrs_path %>
-</div>
+  <div>
+    <%= link_to "Show this pqr", @pqr %> |
+    <%= link_to "Back to pqrs", pqrs_path %>
+  </div>
+
+<%elsif current_admin%>
+  <%= render "pqr", pqr: @pqr%>
+  <%= render "form_respuesta", pqr: @pqr %>
+<%end%>

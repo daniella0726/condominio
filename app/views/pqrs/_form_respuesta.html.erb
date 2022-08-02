@@ -1,0 +1,33 @@
+<%= form_with(model: pqr) do |form| %>
+  <% if pqr.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(pqr.errors.count, "error") %> prohibited this pqr from being saved:</h2>
+
+      <ul>
+        <% pqr.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div style="display:none;">
+    <%= form.text_field :status, value: 'cerrado' %>
+  </div>
+
+  <%= form.fields_for :respuesta_pqrs do |form_respuesta| %>
+    <div style="display:none;"><%= form_respuesta.text_field :admin_id, value: current_admin.id %></div>
+    
+    <div>
+        <%= form_respuesta.label :descripcion, "Escribe la respuesta a continuación", style: "display: block" %>
+        <%= form_respuesta.text_area :descripcion %>
+    </div>
+
+  <%end%>
+
+  
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
